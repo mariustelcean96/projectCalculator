@@ -1,23 +1,28 @@
-const resultsDiv = document.querySelector('.output'); 
+const resultsDiv = document.querySelector('#temp');
+const finalResultDiv = document.querySelector('.finalResult');
 let displayValueNumbers = [];
 let operator;
 let var1 = 0;
 let var2 = 0;
 
  function sum(x, y) {
-  resultsDiv.textContent = x + y;
+  finalResultDiv.textContent = (x + y).toPrecision(3);
 }
 
 function subtract(x, y) {
-  resultsDiv.textContent = x - y;
+  finalResultDiv.textContent = (x - y).toPrecision(3);
 }
 
 function multiply(x, y) {
-  resultsDiv.textContent = x * y;
+  finalResultDiv.textContent = (x * y).toPrecision(3);
 }
 
 function divide(x, y) {
-  resultsDiv.textContent = x / y;
+  if (!y) {
+    finalResultDiv.textContent = 'Division by 0 is not allowed.';
+  } else {
+    finalResultDiv.textContent = (x / y).toPrecision(3);
+  }
 }
 
 function operate(operator, x, y) {
@@ -29,31 +34,68 @@ function operate(operator, x, y) {
   return false;
   }
 }
-
-const numbersNodeList = document.querySelectorAll('.number');
-numbersNodeList.forEach((button) => {
-  button.addEventListener('click', () => {
-  resultsDiv.textContent += button.value;
-  });
-});
-
 const operatorsNodeList = document.querySelectorAll('.operator');
-operatorsNodeList.forEach((button) => {
-  button.addEventListener('click', () => {
-  var1 = (Number(resultsDiv.textContent));
-  resultsDiv.textContent = '';
-  operator = button.value;
+const numbersNodeList = document.querySelectorAll('.number');
+const equalSign = document.querySelector('.result');
+const clearSign = document.querySelector('.clear');
+const reverseSign = document.querySelector('.reverseSign');
+const dotSign = document.querySelector('.dot');
+
+numbersNodeList.forEach((button) => {
+  button.addEventListener('click', (e) => {
+  if (var2 !== 0) {
+    var1 = Number(finalResultDiv.textContent);
+    resultsDiv.textContent += e.target.value;
+    operatorsNodeList.forEach((bttn) => {
+      bttn.classList.remove('activeBttn');
+    });
+  } else {
+    resultsDiv.textContent += button.value;
+    operatorsNodeList.forEach((bttn) => {
+      bttn.classList.remove('activeBttn');
+    });
+  }
   });
 });
 
-const equalSign = document.querySelector('.result');
+
+dotSign.addEventListener('click', (e) => {
+  e.target.disabled = true;
+  resultsDiv.textContent += '.';
+});
+
+operatorsNodeList.forEach((button) => {
+  button.addEventListener('click', (e) => {
+  e.target.classList.add('activeBttn');
+  if(var1 !== 0) {
+    var2 = Number(resultsDiv.textContent);
+    resultsDiv.textContent = '';
+    operate(operator, var1, var2);
+    dotSign.disabled = false;
+    
+  } else {
+    var1 = (Number(resultsDiv.textContent));
+    resultsDiv.textContent = '';
+    dotSign.disabled = false;
+  }
+
+  operator = e.target.value;
+  });
+});
+
 equalSign.addEventListener('click', () => {
   var2 = Number(resultsDiv.textContent);
   operate(operator, var1, var2);
 });
 
-const clearSign = document.querySelector('.clear');
+
 clearSign.addEventListener('click', () => {
   var1 = var2 = 0;
+  operator = undefined;
   resultsDiv.textContent = '';
+  
+});
+
+reverseSign.addEventListener('click', () => {
+  resultsDiv.textContent = (Number(resultsDiv.textContent) * -1);
 });
