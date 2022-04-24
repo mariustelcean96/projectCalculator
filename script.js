@@ -6,22 +6,22 @@ let var1 = 0;
 let var2 = 0;
 
  function sum(x, y) {
-  finalResultDiv.textContent = (x + y).toPrecision(3);
+  finalResultDiv.textContent = (x + y).toFixed(3);
 }
 
 function subtract(x, y) {
-  finalResultDiv.textContent = (x - y).toPrecision(3);
+  finalResultDiv.textContent = (x - y).toFixed(3);
 }
 
 function multiply(x, y) {
-  finalResultDiv.textContent = (x * y).toPrecision(3);
+  finalResultDiv.textContent = (x * y).toFixed(3);
 }
 
 function divide(x, y) {
   if (!y) {
     finalResultDiv.textContent = 'Division by 0 is not allowed.';
   } else {
-    finalResultDiv.textContent = (x / y).toPrecision(3);
+    finalResultDiv.textContent = (x / y).toFixed(3);
   }
 }
 
@@ -58,7 +58,6 @@ numbersNodeList.forEach((button) => {
   });
 });
 
-
 dotSign.addEventListener('click', (e) => {
   e.target.disabled = true;
   resultsDiv.textContent += '.';
@@ -66,13 +65,24 @@ dotSign.addEventListener('click', (e) => {
 
 operatorsNodeList.forEach((button) => {
   button.addEventListener('click', (e) => {
-  e.target.classList.add('activeBttn');
+  const activeBttnRef = document.querySelector('.activeBttn');
+  if (activeBttnRef === null) {
+    e.target.classList.add('activeBttn');
+  } else {
+    activeBttnRef.classList.remove('activeBttn');
+    e.target.classList.add('activeBttn'); 
+  }
+  
   if(var1 !== 0) {
-    var2 = Number(resultsDiv.textContent);
-    resultsDiv.textContent = '';
-    operate(operator, var1, var2);
-    dotSign.disabled = false;
-    
+    if ( activeBttnRef !== null ) {
+      operator = e.target.value;
+      return;
+    } else {
+      var2 = Number(resultsDiv.textContent);
+      resultsDiv.textContent = '';
+      operate(operator, var1, var2);
+      dotSign.disabled = false;
+    }
   } else {
     var1 = (Number(resultsDiv.textContent));
     resultsDiv.textContent = '';
@@ -83,16 +93,23 @@ operatorsNodeList.forEach((button) => {
   });
 });
 
-equalSign.addEventListener('click', () => {
-  var2 = Number(resultsDiv.textContent);
-  operate(operator, var1, var2);
+equalSign.addEventListener('click', (e) => {
+  const activeBttnRef = document.querySelector('.activeBttn');
+  if (activeBttnRef !== null) {
+    alert('Pressing the = sign while an operator is selected will ' +
+    'generate errors. Please finish your calculations.');
+  } else {
+    var2 = Number(resultsDiv.textContent);
+    operate(operator, var1, var2);
+    e.target.disabled = true;
+  }
 });
-
 
 clearSign.addEventListener('click', () => {
   var1 = var2 = 0;
   operator = undefined;
-  resultsDiv.textContent = '';
+  resultsDiv.textContent = finalResultDiv.textContent = '';
+  equalSign.disabled = false;
   
 });
 
