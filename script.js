@@ -125,3 +125,17 @@ undoSign.addEventListener('click', () => {
     dotSign.disabled = false;
   }
 });
+
+// Keyboard support
+1
+window.addEventListener('keydown', (e) => {
+  const key = document.querySelector(`button[key="${e.key}"]`);
+  //key.preventDefault();
+  key.click();
+  /*if (e.code === 'NumpadAdd') {
+    operator === '+'
+    alert('p');}
+  else {
+    resultsDiv.textContent += e.key;
+  }*/
+});
