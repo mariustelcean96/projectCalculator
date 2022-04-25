@@ -40,6 +40,7 @@ const equalSign = document.querySelector('.result');
 const clearSign = document.querySelector('.clear');
 const reverseSign = document.querySelector('.reverseSign');
 const dotSign = document.querySelector('.dot');
+const undoSign = document.querySelector('#undo');
 
 numbersNodeList.forEach((button) => {
   button.addEventListener('click', (e) => {
@@ -115,4 +116,12 @@ clearSign.addEventListener('click', () => {
 
 reverseSign.addEventListener('click', () => {
   resultsDiv.textContent = (Number(resultsDiv.textContent) * -1);
+});
+
+undoSign.addEventListener('click', () => {
+  if ( !resultsDiv.textContent.length) {
+    alert('Nothing to undo.');
+  } else {
+    resultsDiv.textContent = resultsDiv.textContent.slice(0, resultsDiv.textContent.length - 1);
+  }
 });
