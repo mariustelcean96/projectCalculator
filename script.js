@@ -60,8 +60,7 @@ numbersNodeList.forEach((button) => {
 });
 
 dotSign.addEventListener('click', (e) => {
-  e.target.disabled = true;
-  resultsDiv.textContent += '.';
+  resultsDiv.textContent.includes('.') ? e.target.disabled = true : resultsDiv.textContent += '.';
 });
 
 operatorsNodeList.forEach((button) => {
@@ -123,5 +122,6 @@ undoSign.addEventListener('click', () => {
     alert('Nothing to undo.');
   } else {
     resultsDiv.textContent = resultsDiv.textContent.slice(0, resultsDiv.textContent.length - 1);
+    dotSign.disabled = false;
   }
 });
