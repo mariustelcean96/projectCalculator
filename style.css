@@ -1,4 +1,4 @@
-body {
+/*body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -29,4 +29,59 @@ body {
 
 .activeBttn {
   background-color: teal;
+}*/
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
+
+.header, .content, .footer {
+    border: 1px dotted firebrick;
+}
+
+.content {
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.calc-container {
+	width: 150px;
+	border: 1px solid gold;
+}
+
+.display-result {
+	border: 1px solid rgb(66, 63, 46);
+}
+
+.interactive-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px dotted rgb(57, 127, 160);
+}
+
+.buttons-top {
+	display: flex;
+	align-self: flex-end;
+	border: 1px solid saddlebrown;
+	flex: 1 100%;
+}
+
+.item {
+	display: flex;
+	width: 30px;
+	border-radius: 50%;
+	align-items: center;
+	justify-content: center;
+}
+
+
+
+
