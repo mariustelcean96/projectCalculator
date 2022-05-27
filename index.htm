@@ -15,73 +15,40 @@
 
   </head>
   <body>
-    <div class="header">
-      Header
-    </div>
     <div class="content">
       <div class="calc-container">
-          <div class="display-result">
-              Result
+        <div class="finalResult output" style="background-color: rgb(216, 216, 216);"></div>
+        <div class="output" id="temp"></div>
+        <div class="interactive-section">
+          <div class="buttons-top">
+            <button id="undo" value="backspace" key="Backspace"><-</button>
           </div>
-          <div class="interactive-section">
-            <div class="buttons-top">
-              <button id="undo" value="backspace" key="Backspace">Undo</button>
-            </div>
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">1</div>
-            <div class="item">1</div>
+          <div class="buttons-main">
+            <button class="clear item" value="clear" key="Delete">C</button>
+            <button class="item operator" disabled>()</button>
+            <button class="item operator" disabled>%</button>
+            <button class="operator item" value="/" key="/">/</button>
+            <button class="number item" value="7" key="7">7</button>
+            <button class="number item" value="8" key="8">8</button>
+            <button class="number item" value="9" key="9">9</button>
+            <button class="operator item" value="*" key="*">X</button>
+            <button class="number item" value="4" key="4">4</button>
+            <button class="number item" value="5" key="5">5</button>
+            <button class="number item" value="6" key="6">6</button>
+            <button class="operator item" value="-" key="-">-</button>
+            <button class="number item" value="1" key="1">1</button>
+            <button class="number item" value="2" key="2">2</button>
+            <button class="number item" value="3" key="3">3</button>
+            <button class="operator item" value="+" key="+">+</button>
+            <button class="reverseSign item" value="+/-">+/-</button>
+            <button class="number item" value="0" key="0">0</button>
+            <button class="dot item" id="dot" value="dot" key=".">.</button>
+            <button class="result item" value="result" key="Enter">=</button><br>
           </div>
+        </div>
       </div>
     </div>
-    <div class="footer">
-      Footer
-    </div>
-    <!--
-  <div class="calculator-container">
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-  </div>
-  <div style="background-color: grey;" class="finalResult output"></div>
-	<div id="temp" class="output"></div>
-	<button class="operator" value="+" key="+">+</button>
-	<button class="operator" value="-" key="-">-</button>
-	<button class="operator" value="*" key="*">*</button>
-	<button class="operator" value="/" key="/">/</button>
-  <button class="reverseSign" value="+/-">+/-</button>
-	<button class="clear" value="clear" key="Delete">C</button>
-	<button class="result" value="result" key="Enter">=</button><br>
-	<button class="number" value="1" key="1">1</button>
-	<button class="number" value="2" key="2">2</button>
-	<button class="number" value="3" key="3">3</button><br>
-	<button class="number" value="4" key="4">4</button>
-	<button class="number" value="5" key="5">5</button>
-	<button class="number" value="6" key="6">6</button><br>
-	<button class="number" value="7" key="7">7</button>
-	<button class="number" value="8" key="8">8</button>
-	<button class="number" value="9" key="9">9</button><br>
-	<button class="number" value="0" key="0">0</button>
-  <button class="dot" id="dot" value="dot" key=".">.</button>
-  <button id="undo" value="backspace" key="Backspace">Undo</button>
-  1. UI
     <script src="script.js">
     </script>
-    -->
   </body>
 </html>

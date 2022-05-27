@@ -1,45 +1,8 @@
-/*body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.calculator-container {
-	display: flex;
-	border: 1px solid red;
-	flex-flow: row wrap;
-	width: 150px;
-	height: 300px;
-}
-
-.calculator-container div {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	margin: auto;
-	border: 1px dotted blue;
-}
-
-.output {
-	min-width:30px;
-	min-height:20px;
-	width: 20%;
-	background-color: lightgrey;
-}
-
-.activeBttn {
-  background-color: teal;
-}*/
-
 body {
     height: 100vh;
     margin: 0;
     display: flex;
     flex-direction: column;
-}
-
-.header, .content, .footer {
-    border: 1px dotted firebrick;
 }
 
 .content {
@@ -51,12 +14,14 @@ body {
 }
 
 .calc-container {
-	width: 150px;
-	border: 1px solid gold;
+	width: 156px;
+	border: 1px solid rgb(207, 207, 207);
+	box-shadow: 2px 4px 16px rgba(0,0,0,.2);
 }
 
-.display-result {
-	border: 1px solid rgb(66, 63, 46);
+.output {
+	min-width:30px;
+	min-height:20px;
 }
 
 .interactive-section {
@@ -64,22 +29,61 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 2px dotted rgb(57, 127, 160);
+}
+
+button {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.operator {
+	color: green;
+}
+
+.clear {
+	color: rgb(230, 60, 18);
+}
+
+.result {
+	background-color: green;
+	color: white;
+}
+
+.activeBttn {
+	background-color: teal;
+	color: white;
 }
 
 .buttons-top {
 	display: flex;
 	align-self: flex-end;
-	border: 1px solid saddlebrown;
+	
 	flex: 1 100%;
+}
+
+#undo {
+	padding: 0 4px;
+	margin: 2px;
+	border-radius: 40%;
+}
+
+.buttons-main {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	gap: 10px;
+	margin: 2px;
+	
 }
 
 .item {
 	display: flex;
 	width: 30px;
-	border-radius: 50%;
+	border-radius: 40%;
 	align-items: center;
 	justify-content: center;
+	
 }
 
 
